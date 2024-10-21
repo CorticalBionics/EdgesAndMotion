@@ -4,7 +4,7 @@ clc
 
 %% Figure 2
 
-BCI_path = '\\Data\Fig 2';
+BCI_path = '\\Data\Fig 2'; %% Put the path of the 'data' folder
 cd(BCI_path)
 
 % Panel B (left)
@@ -65,6 +65,7 @@ for i = 1:length(NC1Data)
     end
 end
 
+figure
 bar(mean([Perf;Perf_2],2))
 hold on
 errorbar(mean([Perf;Perf_2],2),std([Perf;Perf_2]'),'LineStyle','none')
@@ -143,6 +144,7 @@ errorbar(mean([Perf_d2_C1;Perf_d3_C1],2),std([Perf_d2_C1;Perf_d3_C1]'),'LineStyl
 xticklabels({'d2','d3'})
 
 %C2
+figure
 bar(mean(Perf_C2,2))
 hold on
 errorbar(mean(Perf_C2,2),std(Perf_C2'),'LineStyle','none')
@@ -167,6 +169,7 @@ end
 
 plot([mean([Perf_d2_C1;Perf_d3_C1],2) mean(Perf_3PF_C1,2)]')
 legend({'d2','d3'})
+xticks([1 2])
 xticklabels({'2-PFs','2-PFs'})
 
 %% Figure S2
@@ -292,13 +295,13 @@ for k = 1 : 3
     z = z+1;
 end
 
+figure
 plot([40 60 80],[mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)])...
     mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]),mean([CC{3}(1,1) CC{3}(2,2) CC{3}(3,3)])]);
 
 %% Figure S3
 clear all
 close all
-clc
 
 % Panel C
 
@@ -377,6 +380,7 @@ Perc_a2=[95 52 42 90 94 94.13];
 Pred_l2=[35.4 17.8 10.2 40.8 52.8 95.4];
 Perc_l2=[53.5 18.6 9.1 46.6 86.9 49.4];
 
+figure
 scatter([Pred_l1 Pred_l2],[Perc_l1 Perc_l2])
 axis square
 xlim([10 100])
@@ -393,6 +397,8 @@ lsline
 [R,p]=corrcoef([Pred_a1 Pred_a2],[Perc_a1 Perc_a2])
 
 %% Figure 3
+clear all
+close all
 
 BCI_path = '\\Data\Fig 3';
 cd(BCI_path)
@@ -503,6 +509,8 @@ for i = 1:length(NC1Data)
 end
 
 %% Figure S5
+clear all
+close all
 
 load("Fig S5.mat");
 group={'Concave','Convex','Flat'};
@@ -537,6 +545,8 @@ for i = 1:length(NC1Data)
 end
 
 %% Figure 4
+clear all
+close all
 
 % Figure 4 Panel A top
 BCI_path = '\\Data\Fig 4';
@@ -582,6 +592,7 @@ for k = 1 : 4
 end
 
 %C1
+figure
 bar(mean([M_1(1,1) M_1(2,2) M_1(3,3)]))
 hold on
 errorbar(mean([M_1(1,1) M_1(2,2) M_1(3,3)]),std([M_1(1,1) M_1(2,2) M_1(3,3)]),'LineStyle','none')
@@ -618,6 +629,7 @@ for i = 1:length(NC1Data)
 end
 
 %C2 (Figure 4A top)
+figure
 bar(mean([C_perc(1,1) C_perc(2,2) C_perc(3,3) C_perc(4,4)]))
 hold on
 errorbar(mean([C_perc(1,1) C_perc(2,2) C_perc(3,3) C_perc(4,4)]),std([C_perc(1,1) C_perc(2,2) C_perc(3,3) C_perc(4,4)]),'LineStyle','none')
@@ -666,17 +678,20 @@ end
 
 % Figure 4 Panel A bottom
 %C1
+figure
 bar(mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)]))
 hold on
 errorbar(mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)]),std([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)]),'LineStyle','none')
 
 %C2
+figure
 bar(mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]))
 hold on
 errorbar(mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]),std([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]),'LineStyle','none')
 
 % Figure S7C
 Inter_Intra=[mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)]) mean([M_1(1,1) M_1(2,2) M_1(3,3) M_1(4,4)])];
+figure
 bar(Inter_Intra)
 hold on
 errorbar(Inter_Intra,[std([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)]) std([M_1(1,1) M_1(2,2) M_1(3,3) M_1(4,4)])],'LineStyle','none')
@@ -708,6 +723,7 @@ RespM_No=[Resp{1}(1,:);Resp{2}(1,:);Resp{3}(1,:)];
 RespM_M=[Resp{1}(2,:);Resp{2}(2,:);Resp{3}(2,:)];
 RespM_S=[Resp{1}(3,:);Resp{2}(3,:);Resp{3}(3,:)];
 
+figure
 hold all
 plot(Gaps,mean(RespM_No))
 plot(Gaps,mean(RespM_M))
@@ -737,6 +753,7 @@ RespM_No=[Resp{1}(1,:);Resp{2}(1,:);Resp{3}(1,:)];
 RespM_M=[Resp{1}(2,:);Resp{2}(2,:);Resp{3}(2,:)];
 RespM_S=[Resp{1}(3,:);Resp{2}(3,:);Resp{3}(3,:)];
 
+figure
 hold all
 plot(Gaps,mean(RespM_No))
 plot(Gaps,mean(RespM_M))
@@ -785,6 +802,7 @@ end
 
 NOVFS_VFS=[mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3) CC{1}(4,4)]) ...
     mean([M_1(1,1) M_1(2,2) M_1(3,3) M_1(4,4)])];
+figure
 bar(NOVFS_VFS)
 hold on
 errorbar(NOVFS_VFS,[std([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3) CC{1}(4,4)]) ...
@@ -974,6 +992,7 @@ for k = 1 : 5
     z = z+1;
 end
 
+figure
 plot([50 200 400 600 800],[mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)])...
     mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]),mean([CC{3}(1,1) CC{3}(2,2) CC{3}(3,3)]) ...
     mean([CC{4}(1,1) CC{4}(2,2) CC{4}(3,3)]),mean([CC{5}(1,1) CC{5}(2,2) CC{5}(3,3)])]);
@@ -1038,6 +1057,7 @@ for k = 1 : 4
     z = z+1;
 end
 
+figure
 plot([40 60 80],[mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)])...
     mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]),mean([CC{3}(1,1) CC{3}(2,2) CC{3}(3,3)])]);
 
@@ -1198,6 +1218,7 @@ YY=[yy yy1];
 XX=XX/max(XX);
 YY=YY/max(YY);
 
+figure
 scatter([X XX],[Y YY])
 lsline
 [R,p]=corrcoef([X XX],[Y YY])
@@ -1251,6 +1272,7 @@ end
 
 % Panel C (left)
 
+figure
 bar([mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3) CC{2}(4,4) CC{2}(5,5)]) ...
     mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3) CC{1}(4,4) CC{1}(5,5)])])
 hold on
@@ -1263,6 +1285,7 @@ ylabel('Performance (%)')
 
 % Panel C (right)
 
+figure
 scatter([2 3 4 6],[mean([CC{2}(2,2) CC{2}(5,5)]) CC{2}(1,1) CC{2}(3,3) CC{2}(4,4)],'red')
 hold on
 lsline
