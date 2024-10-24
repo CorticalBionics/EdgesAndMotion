@@ -4,8 +4,8 @@ clc
 
 %% Figure 2
 
-BCI_path = '\\Data\Fig 2'; %% Put the path of the 'data' folder
-cd(BCI_path)
+% BCI_path = '\\Data\Fig 2'; %% Put the path of the 'data' folder
+% cd(BCI_path)
 
 % Panel B (left)
 
@@ -70,6 +70,8 @@ bar(mean([Perf;Perf_2],2))
 hold on
 errorbar(mean([Perf;Perf_2],2),std([Perf;Perf_2]'),'LineStyle','none')
 xticklabels({'C1 d2','C1 d3','C2 d1','C2 d2','C2 d3'})
+ylabel('Performance(%)')
+title('Fig.2 Panel B right')
 
 % Panel C
 
@@ -138,17 +140,22 @@ for i = 1:length(NC1Data)
 end
 
 %C1
+figure
 bar(mean([Perf_d2_C1;Perf_d3_C1],2))
 hold on
 errorbar(mean([Perf_d2_C1;Perf_d3_C1],2),std([Perf_d2_C1;Perf_d3_C1]'),'LineStyle','none')
-xticklabels({'d2','d3'})
+xticklabels({'C1 d2','C1 d3'})
+ylabel('Performance(%)')
+title('Fig.2 Panel D C1')
 
 %C2
 figure
 bar(mean(Perf_C2,2))
 hold on
 errorbar(mean(Perf_C2,2),std(Perf_C2'),'LineStyle','none')
-xticklabels({'d3','d2'})
+xticklabels({'C2 d3','C2 d2'})
+ylabel('Performance(%)')
+title('Fig.2 Panel D C2')
 
 % Panel E
 
@@ -167,8 +174,11 @@ for i = 1:length(NC1Data)
     end
 end
 
+figure
 plot([mean([Perf_d2_C1;Perf_d3_C1],2) mean(Perf_3PF_C1,2)]')
 legend({'d2','d3'})
+title('Fig.2 Panel E')
+ylabel('Performance(%)')
 xticks([1 2])
 xticklabels({'2-PFs','2-PFs'})
 
@@ -237,6 +247,9 @@ end
 plot([0.25 0.5 1 2 3],[mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)])...
     mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]),mean([CC{3}(1,1) CC{3}(2,2) CC{3}(3,3)]) ...
     mean([CC{4}(1,1) CC{4}(2,2) CC{4}(3,3)]),mean([CC{5}(1,1) CC{5}(2,2) CC{5}(3,3)])]);
+title('Fig. S2 Duration')
+xlabel('Duration (s)')
+ylabel('Performance(%)')
 
 % Panel B
 
@@ -298,6 +311,10 @@ end
 figure
 plot([40 60 80],[mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)])...
     mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]),mean([CC{3}(1,1) CC{3}(2,2) CC{3}(3,3)])]);
+title('Fig. S2 Amplitude')
+xlabel('Amplitude (uA)')
+ylabel('Performance(%)')
+
 
 %% Figure S3
 clear all
@@ -364,7 +381,7 @@ for i = 2:length(NC1Data)
     end
 end
 
-% Panel E
+% Panel EF
 
 %C1
 Pred_a1=[7 103 80 144 38 54 126 95 99 120];
@@ -382,6 +399,7 @@ Perc_l2=[53.5 18.6 9.1 46.6 86.9 49.4];
 
 figure
 scatter([Pred_l1 Pred_l2],[Perc_l1 Perc_l2])
+title('Fig. S3 Panel F')
 axis square
 xlim([10 100])
 ylim([10 100])
@@ -390,6 +408,7 @@ lsline
 
 figure
 scatter([Pred_a1 Pred_a2],[Perc_a1 Perc_a2])
+title('Fig. S3 Panel E')
 axis square
 xlim([0 180])
 ylim([0 180])
@@ -400,8 +419,8 @@ lsline
 clear all
 close all
 
-BCI_path = '\\Data\Fig 3';
-cd(BCI_path)
+% BCI_path = '\\Data\Fig 3'; %%move to Fig 3
+% cd(BCI_path)
 
 % Panel B
 
@@ -439,7 +458,7 @@ for e = 1:length(AS4mcEData)
         else
             yticklabels({});
         end
-        xlabel(sprintf('Curvature %'))
+        xlabel(sprintf('Curvature (%)'))
     end
 end
 ylim([0 1])
@@ -468,7 +487,7 @@ for e = 1:length(AS4mcEData)
         else
             yticklabels({});
         end
-        xlabel(sprintf('Curvature %'))
+        xlabel(sprintf('Curvature (%)'))
     end
 end
 ylim([0 1])
@@ -485,7 +504,7 @@ for i = 1:length(NC1Data)
 
     [C,order] = confusionmat(response.Orient,response.ReportedOrient,'Order',group);
     Title = strcat(['MultiDigitEdges - N=', num2str(rep)]);
-    String = {'Cylinder','Pen','Ball'};
+    String = {'Can','Pen','Ball'};
 
     h=figure;
     C_perc=(C./15)*100;
@@ -544,13 +563,13 @@ for i = 1:length(NC1Data)
     end
 end
 
-%% Figure 4
+%% Figure 4 & S7
 clear all
 close all
 
 % Figure 4 Panel A top
-BCI_path = '\\Data\Fig 4';
-cd(BCI_path)
+% BCI_path = '\\Data\Fig 4'; %Move to Fig 4
+% cd(BCI_path)
 
 load("Panel A_top_C1.mat");
 
@@ -561,12 +580,12 @@ for i = 1:length(NC1Data)
     if i==2
         id=25;
         group={'Th-Pi','Pi-Th','Pa-Tip','Tip-Pa'};
-        [C,order] = confusionmat(response.Motion,response.ReportedMotion)
+        [C,order] = confusionmat(response.Motion,response.ReportedMotion);
     else
         id=20;
         group={'P-T','T-P','P-Pi','Pi-P'};
     end
-    [C,order] = confusionmat(response.Motion,response.ReportedMotion,'Order',group)
+    [C,order] = confusionmat(response.Motion,response.ReportedMotion,'Order',group);
     String = {'Ulnar-Radial','Radial-Ulnar', 'Proximal-Distal','Distal-Proximal',};
     C_perc=(C./id)*100;
     CC{i}=C_perc;
@@ -596,17 +615,20 @@ figure
 bar(mean([M_1(1,1) M_1(2,2) M_1(3,3)]))
 hold on
 errorbar(mean([M_1(1,1) M_1(2,2) M_1(3,3)]),std([M_1(1,1) M_1(2,2) M_1(3,3)]),'LineStyle','none')
+title('Fig.4 Panel A right C1')
+xticklabels('C1')
+ylabel('Performance (%)')
 
-%% Figure S7A
-
-load("Panel A_bottom_Fig S7BC.mat");
+% Figure S7A
+load("Panel A_top_Fig S7A_C2.mat");
+figure
 
 for i = 1:length(NC1Data)
 
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
     group={'R-I','I-R','Down','Up'};
-    [C,order] = confusionmat(response.Motion,response.ReportedMotion,'Order',group)
+    [C,order] = confusionmat(response.Motion,response.ReportedMotion,'Order',group);
     String = {'Ulnar-Radial','Radial-Ulnar', 'Proximal-Distal','Distal-Proximal',};
     C_perc=(C./15)*100;
     ax=imagesc(C_perc,[0,100]);
@@ -633,6 +655,9 @@ figure
 bar(mean([C_perc(1,1) C_perc(2,2) C_perc(3,3) C_perc(4,4)]))
 hold on
 errorbar(mean([C_perc(1,1) C_perc(2,2) C_perc(3,3) C_perc(4,4)]),std([C_perc(1,1) C_perc(2,2) C_perc(3,3) C_perc(4,4)]),'LineStyle','none')
+title('Fig.4 Panel A right C2')
+xticklabels('C2')
+ylabel('Performance (%)')
 
 % Figure S7B
 
@@ -682,12 +707,18 @@ figure
 bar(mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)]))
 hold on
 errorbar(mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)]),std([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)]),'LineStyle','none')
+title('Fig.4 Panel A bottom C1')
+xticklabels('C1')
+ylabel('Performance (%)')
 
 %C2
 figure
 bar(mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]))
 hold on
 errorbar(mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]),std([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]),'LineStyle','none')
+title('Fig.4 Panel A bottom C2')
+xticklabels('C2')
+ylabel('Performance (%)')
 
 % Figure S7C
 Inter_Intra=[mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)]) mean([M_1(1,1) M_1(2,2) M_1(3,3) M_1(4,4)])];
@@ -695,7 +726,9 @@ figure
 bar(Inter_Intra)
 hold on
 errorbar(Inter_Intra,[std([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)]) std([M_1(1,1) M_1(2,2) M_1(3,3) M_1(4,4)])],'LineStyle','none')
-
+title('Fig. S7 Panel C')
+xticklabels({'Inter-digits', 'Intra-digit'})
+ylabel('Performance (%)')
 
 % Figure 4 Panel B
 
@@ -728,6 +761,11 @@ hold all
 plot(Gaps,mean(RespM_No))
 plot(Gaps,mean(RespM_M))
 plot(Gaps,mean(RespM_S))
+title('Fig. 4 Panel B C1')
+xlabel('Inter-Trains-Interval(s)')
+legend({'Simultaneous Tap','Continous Motion','Successive Taps'})
+ylabel('Performance (%)')
+ylim([0 1]);
 
 %C2
 load('Panel B_C2.mat')
@@ -758,6 +796,11 @@ hold all
 plot(Gaps,mean(RespM_No))
 plot(Gaps,mean(RespM_M))
 plot(Gaps,mean(RespM_S))
+title('Fig. 4 Panel B C2')
+xlabel('Inter-Trains-Interval(s)')
+legend({'Simultaneous Tap','Continous Motion','Successive Taps'})
+ylabel('Performance (%)')
+ylim([0 1]);
 
 % Figure 4 Panel C
 
@@ -809,10 +852,14 @@ errorbar(NOVFS_VFS,[std([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3) CC{1}(4,4)]) ...
     std([M_1(1,1) M_1(2,2) M_1(3,3) M_1(4,4)])],'LineStyle','none')
 xticklabels({'VFS','NO-VFS'})
 
+title('Fig. 4 Panel C')
+ylabel('Performance (%)')
+
 % Figure 4 Panel D
 
 %C1
 load("Panel D_C1.mat");
+figure
 
 for ii=1:size(Data,1)
 
@@ -834,7 +881,7 @@ for ii=1:size(Data,1)
         u_types = unique(AS4mcEData(e).ResponseSummary.Type);
         for f = 1:length(u_types)
             subplot(1,length(u_types),f); hold on
-            title('Speed of Motion Discrimination - Dur')
+            title('Speed of Motion Discrimination - Dur C1')
             fidx = AS4mcEData(e).ResponseSummary.Type == u_types(f);
             x = AS4mcEData(e).ResponseSummary.CompSpeed(fidx);
             % Mean
@@ -852,7 +899,7 @@ for ii=1:size(Data,1)
             else
                 yticklabels({});
             end
-            xlabel(sprintf('Comparison Dur'))
+            xlabel(sprintf('Comparison Dur (ms)'))
         end
     end
     ylim([0 1])
@@ -860,6 +907,7 @@ end
 
 %C2
 load("Panel D_C2.mat");
+figure
 
 for ii=1:size(Data,1)
 
@@ -881,7 +929,7 @@ for ii=1:size(Data,1)
         u_types = unique(AS4mcEData(e).ResponseSummary.Type);
         for f = 1:length(u_types)
             subplot(1,length(u_types),f); hold on
-            title('Speed of Motion Discrimination - Dur')
+            title('Speed of Motion Discrimination - Dur C2')
             fidx = AS4mcEData(e).ResponseSummary.Type == u_types(f);
             x = AS4mcEData(e).ResponseSummary.CompSpeed(fidx);
             % Mean
@@ -899,7 +947,7 @@ for ii=1:size(Data,1)
             else
                 yticklabels({});
             end
-            xlabel(sprintf('Comparison Dur'))
+            xlabel(sprintf('Comparison Dur (ms)'))
         end
     end
     ylim([0 1])
@@ -935,7 +983,37 @@ for i = 1:length(NC1Data)
     end
 end
 
+load("Fig S7_E.mat");
+for i = 1:length(NC1Data)
+    response=NC1Data(i).ResponseTable;
+    rep=size(response,1);
+    [C,order] = confusionmat(response.Motion,response.ReportedMotion);
+    Title = strcat(['Direction of Motion - N=', num2str(rep), '- Digit D2 - RADIAL ']);
+    String = { 'STATIC','EXPANSION', 'CONTRACTION'};
+    h=figure;
+    C_perc=(C./25)*100;
+    ax=imagesc(C_perc,[0,100]);
+    title(Title,'FontSize',30,'FontWeight','bold');
+    set(gca,'YTick',1:2+1,'YTickLabel',String);
+    set(gca,'XTick',1:2+1,'XTickLabel',String);
+    ax = gca;
+    ax.LineWidth = 0.1;
+    ax.FontSize = 15;
+    ax.FontWeight='bold';
+    colormap(ax,gray)
+    colorbar
+
+    z=0.8;
+    for k = 1 : 3
+        P=C_perc(k, k);
+        text(z, k, num2str(round(P)),'Color','black','FontSize', 30,'FontWeight','bold');
+        z = z+1;
+    end
+end
+
+
 %% Figure S6A
+clear all
 load('Fig S6_A.mat')
 group={'Thu-Pi','Pi-Thu','Pal-Tip','Tip-Pal'};
 tmp=1;
@@ -946,7 +1024,7 @@ for i = 1:length(NC1Data)
         response=response(response.Dur==j,:);
         rep=size(response,1);
         [C,order] = confusionmat(response.Motion,response.ReportedMotion,'Order',group); %
-        Title = strcat(['Direction of Motion - N=', num2str(rep), '- Digit D2 ']);
+        Title = strcat(['Direction of Motion - N=', num2str(rep), '- Dur ', num2str(j)]);
         String = {'Radial-Ulnar', 'Ulnar-Radial', 'Proximal-Distal','Distal-Proximal'};
         h=figure;
         C_perc=(C./15)*100;
@@ -986,7 +1064,7 @@ colormap(ax,gray)
 colorbar
 z=0.8;
 
-for k = 1 : 5
+for k = 1 : 4
     P=round(M(k, k));
     text(z, k, num2str(P),'Color','black','FontSize', 30,'FontWeight','bold');
     z = z+1;
@@ -996,7 +1074,10 @@ figure
 plot([50 200 400 600 800],[mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)])...
     mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]),mean([CC{3}(1,1) CC{3}(2,2) CC{3}(3,3)]) ...
     mean([CC{4}(1,1) CC{4}(2,2) CC{4}(3,3)]),mean([CC{5}(1,1) CC{5}(2,2) CC{5}(3,3)])]);
-
+title('Fig. S6 Panel A')
+ylabel('Performance (%)')
+xlabel('Duration (ms)')
+ylim([0 100])
 
 % Figure S6B
 clear all
@@ -1040,9 +1121,10 @@ end
 M=(CC{1}+CC{2}+CC{3})/length(CC);
 ax=imagesc(M,[0,100]);
 Title = strcat(['Motion Detection - N=', num2str(rep*length(CC))]);
+String = {'Radial-Ulnar', 'Ulnar-Radial', 'Proximal-Distal','Distal-Proximal'};
 title(Title,'FontSize',30,'FontWeight','bold');
-set(gca,'YTick',1:2+1,'YTickLabel',String);
-set(gca,'XTick',1:2+1,'XTickLabel',String);
+set(gca,'YTick',1:3+1,'YTickLabel',String);
+set(gca,'XTick',1:3+1,'XTickLabel',String);
 ax = gca;
 ax.LineWidth = 0.1;
 ax.FontSize = 15;
@@ -1060,37 +1142,10 @@ end
 figure
 plot([40 60 80],[mean([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3)])...
     mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3)]),mean([CC{3}(1,1) CC{3}(2,2) CC{3}(3,3)])]);
-
-%% Figure S7E
-clear all
-load("Fig S7_E.mat");
-
-for i = 1:length(NC1Data)
-    response=NC1Data(i).ResponseTable;
-    rep=size(response,1);
-    [C,order] = confusionmat(response.Motion,response.ReportedMotion);
-    Title = strcat(['Direction of Motion - N=', num2str(rep), '- Digit D2 - RADIAL ']);
-    String = { 'STATIC','EXPANSION', 'CONTRACTION'};
-    h=figure;
-    C_perc=(C./25)*100;
-    ax=imagesc(C_perc,[0,100]);
-    title(Title,'FontSize',30,'FontWeight','bold');
-    set(gca,'YTick',1:2+1,'YTickLabel',String);
-    set(gca,'XTick',1:2+1,'XTickLabel',String);
-    ax = gca;
-    ax.LineWidth = 0.1;
-    ax.FontSize = 15;
-    ax.FontWeight='bold';
-    colormap(ax,gray)
-    colorbar
-
-    z=0.8;
-    for k = 1 : 3
-        P=C_perc(k, k);
-        text(z, k, num2str(round(P)),'Color','black','FontSize', 30,'FontWeight','bold');
-        z = z+1;
-    end
-end
+title('Fig. S6 Panel B')
+ylabel('Performance (%)')
+xlabel('Amplitude (uA)')
+ylim([0 100])
 
 
 %% Figure S8A
@@ -1117,7 +1172,7 @@ for ii=1:size(Data,2)
         u_types = unique(AS4mcEData(e).ResponseSummary.Type);
         for f = 1:length(u_types)
             subplot(1,length(u_types),f); hold on
-            title('Speed of Motion Discrimination - Dur')
+            title('Fig. S8A')
             fidx = AS4mcEData(e).ResponseSummary.Type == u_types(f);
             x = AS4mcEData(e).ResponseSummary.CompSpeed(fidx);
             % Mean
@@ -1146,6 +1201,7 @@ end
 % Figure S8B
 clear all
 load("Fig S8_B.mat");
+figure 
 
 for ii=1:size(Data,2)
     ref_speed = 500;
@@ -1166,7 +1222,7 @@ for ii=1:size(Data,2)
         u_types = unique(AS4mcEData(e).ResponseSummary.Type);
         for f = 1:length(u_types)
             subplot(1,length(u_types),f); hold on
-            title('Speed of Motion Discrimination - TC')
+            title('Fig. S8B')
             fidx = AS4mcEData(e).ResponseSummary.Type == u_types(f);
             x = AS4mcEData(e).ResponseSummary.CompSpeed(fidx);
             % Mean
@@ -1223,13 +1279,18 @@ scatter([X XX],[Y YY])
 lsline
 [R,p]=corrcoef([X XX],[Y YY])
 
+title('Fig. S9 C1C2')
+ylabel('Percept Length')
+xlabel('Cortical Length')
+
 %% Figure 5
 
 % Panel B
 clear all
+close all
 
-BCI_path = '\\Data\Fig 5';
-cd(BCI_path)
+% BCI_path = '\\Data\Fig 5'; % Move to Fig 5
+% cd(BCI_path)
 
 load("PanelABC.mat");
 
@@ -1282,6 +1343,7 @@ errorbar([mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3) CC{2}(4,4) CC{2}(5,5)])...
     std([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3) CC{1}(4,4) CC{1}(5,5)])],'LineStyle','none')
 xticklabels({'Simultaneous','Sequential'})
 ylabel('Performance (%)')
+title('Fig.5 Panel C left')
 
 % Panel C (right)
 
@@ -1291,10 +1353,10 @@ hold on
 lsline
 scatter([2 3 4 6],[mean([CC{1}(2,2) CC{1}(5,5)]) CC{1}(1,1) CC{1}(3,3) CC{1}(4,4)],'black')
 lsline
-legend({'Simultaneous','Sequential'})
+legend({'Simultaneous','','Sequential',''})
 xlabel('Number of Edges')
 ylabel('Performance (%)')
-title('Shape Complexity')
+title('Fig.5 Panel C right')
 
 % Panel E
 
@@ -1305,10 +1367,12 @@ class_names = ["LEFT", "CONTROL", "RIGHT"];
 t_offset = 10;
 data_points = 50 * t_offset * 2;
 
+figure
 [ap, atab, s] = anova1(tab.EndPosition, tab.Stim, 'off');
 mc = multcompare(s);
 
 % Confusion matrix
+figure
 u_set = unique(tab.Set);
 titles = {'Normal', 'HighCL', 'Normal', 'LowCL'};
 clf; tiledlayout('flow');
@@ -1344,6 +1408,7 @@ end
 
 % Plot left/right
 x = linspace(-t_offset, t_offset, data_points + 1);
+figure
 clf;
 subplot(1,2,1)
     % Control condition
@@ -1386,12 +1451,9 @@ subplot(1,2,2)
     xlabel('Time (s)')
     plot([0,0], gca().YLim, 'Color', [.6 .6 .6], 'LineStyle', '--')
 
-shg
-
-%%
 u_set = unique(tab.Set);
 titles = {'No CL'};
-
+figure
 clf;
 for j = 1
     hold on
