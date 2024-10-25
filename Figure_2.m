@@ -3,7 +3,6 @@
 %DataPath = '... \data\Fig 2'; %% Put the path of the 'data' folder
 addpath("DataPath")
 load(fullfile(DataPath, 'Panel B_C1.mat'))
-
 group={'v','h','n'};
 Perf=zeros(3,3);
 
@@ -11,11 +10,9 @@ for i = 1:length(NC1Data)
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
     Digit=NC1Data(i).Digit;
-
     [C,order] = confusionmat(response.Orient,response.ReportedOrient,'Order',group);
     Title = strcat(['Orientation Detection - N=', num2str(rep), '- Digit ' , num2str(Digit)]);
     String = {'Vertical', 'Horizontal', 'Neither'};
-
     h=figure;
     C_perc=(C./50)*100;
     ax=imagesc(C_perc,[0,100]);
@@ -28,7 +25,6 @@ for i = 1:length(NC1Data)
     ax.FontWeight='bold';
     colormap(ax,gray)
     colorbar
-
     z=0.8;
     for k = 1 : 3
         P=C_perc(k, k);
@@ -45,7 +41,6 @@ group={'Vertical', 'Horizontal', 'Neither'};
 Perf_2=zeros(2,3);
 
 for i = 1:length(NC1Data)
-
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
     Digit=NC1Data(i).Digit;
@@ -72,13 +67,11 @@ load(fullfile(DataPath, 'Panel CDE_C1.mat'))
 Perf_d2_C1=zeros(1,5);
 
 for i = 1
-
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
     [C,order] = confusionmat(response.Orient,response.ReportedOrient);
     Title = strcat(['MultiEdges - N=', num2str(rep)]);
     String = {'E1', 'E2', 'E3','E4','E5'};
-
     h=figure;
     C_perc=(C./40)*100;
     ax=imagesc(C_perc,[0,100]);
@@ -91,7 +84,6 @@ for i = 1
     ax.FontWeight='bold';
     colormap(ax,gray)
     colorbar
-
     z=0.8;
     for k = 1 : 5
         P=round(C_perc(k, k));
@@ -103,7 +95,6 @@ end
 
 % Panel D
 Perf_d3_C1=zeros(1,5);
-
 for i = 2
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
@@ -118,7 +109,6 @@ end
 
 load(fullfile(DataPath, 'Panel D_C2.mat'))
 Perf_C2=zeros(2,3);
-
 for i = 1:length(NC1Data)
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
@@ -154,7 +144,6 @@ load(fullfile(DataPath, 'Panel E_Fig S2C_C1.mat'))
 Perf_3PF_C1=zeros(2,4);
 
 for i = 1:length(NC1Data)
-
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
     [C,order] = confusionmat(response.Orient,response.ReportedOrient);

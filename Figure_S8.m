@@ -5,7 +5,6 @@ addpath("DataPath")
 
 % Panel A center
 load(fullfile(DataPath, 'Fig S8_A.mat'))
-
 for ii=1:size(Data,2)
     ref_speed = 500;
 
@@ -52,7 +51,6 @@ end
 % Panel B
 load(fullfile(DataPath, 'Fig S8_B.mat'))
 figure 
-
 for ii=1:size(Data,2)
     ref_speed = 500;
 

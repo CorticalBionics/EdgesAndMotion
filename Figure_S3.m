@@ -6,13 +6,11 @@ addpath("DataPath")
 % Panel C
 load(fullfile(DataPath, 'Fig S3_C.mat'))
 for i = 1
-
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
     [C,order] = confusionmat(response.Orient,response.ReportedOrient);
     Title = strcat(['MultiEdges - N=', num2str(rep)]);
     String = {'E1', 'E2', 'E3','E4','E5'};
-
     h=figure;
     C_perc=(C./40)*100;
     ax=imagesc(C_perc,[0,100]);
@@ -25,7 +23,6 @@ for i = 1
     ax.FontWeight='bold';
     colormap(ax,gray)
     colorbar
-
     z=0.8;
     for k = 1 : 5
         P=round(C_perc(k, k));
@@ -35,13 +32,11 @@ for i = 1
 end
 
 for i = 2:length(NC1Data)
-
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
     Title = strcat(['MultiEdges - N=', num2str(rep)]);
     String = {'E1', 'E2', 'E3','E4'};
     [C,order] = confusionmat(response.Orient,response.ReportedOrient);
-
     h=figure;
     C_perc=(C./40)*100;
     ax=imagesc(C_perc,[0,100]);
@@ -54,7 +49,6 @@ for i = 2:length(NC1Data)
     ax.FontWeight='bold';
     colormap(ax,gray)
     colorbar
-
     z=0.8;
     for k = 1 : 4
         P=round(C_perc(k, k));

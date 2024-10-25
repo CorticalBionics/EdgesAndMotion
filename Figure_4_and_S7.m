@@ -7,7 +7,6 @@ addpath("DataPath")
 load(fullfile(DataPath, 'Panel A_top_C1.mat'))
 
 for i = 1:length(NC1Data)
-
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
     if i==2
@@ -55,9 +54,7 @@ ylabel('Performance (%)')
 % Figure S7 A
 load(fullfile(DataPath, 'Panel A_top_Fig S7A_C2.mat'))
 figure
-
 for i = 1:length(NC1Data)
-
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
     group={'R-I','I-R','Down','Up'};
@@ -94,7 +91,6 @@ ylabel('Performance (%)')
 
 % Figure S7B
 load(fullfile(DataPath, 'Panel A_bottom_Fig S7BC.mat'))
-
 for i = 1:length(NC1Data)
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
@@ -160,7 +156,6 @@ xticklabels({'Inter-digits', 'Intra-digit'})
 ylabel('Performance (%)')
 
 % Figure 4 Panel B
-
 %C1
 load(fullfile(DataPath, 'Panel B_C1.mat'))
 group={'No Motion','Motion','Succesive'};
@@ -235,7 +230,6 @@ ylim([0 1]);
 
 load(fullfile(DataPath, 'Panel C.mat'))
 group={'Th-Pi','Pi-Th','Pa-Tip','Tip-Pa'};
-
 for i = 1:length(NC1Data)
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
@@ -276,16 +270,13 @@ hold on
 errorbar(NOVFS_VFS,[std([CC{1}(1,1) CC{1}(2,2) CC{1}(3,3) CC{1}(4,4)]) ...
     std([M_1(1,1) M_1(2,2) M_1(3,3) M_1(4,4)])],'LineStyle','none')
 xticklabels({'VFS','NO-VFS'})
-
 title('Fig. 4 Panel C')
 ylabel('Performance (%)')
 
 % Figure 4 Panel D
-
 %C1
 load(fullfile(DataPath, 'Panel D_C1.mat'))
 figure
-
 for ii=1:size(Data,1)
 
     ref_speed = 500;
@@ -332,7 +323,6 @@ end
 %C2
 load(fullfile(DataPath, 'Panel D_C2.mat'))
 figure
-
 for ii=1:size(Data,1)
 
     ref_speed = 1000;
@@ -378,7 +368,6 @@ end
 
 % Figure S7D
 load(fullfile(DataPath, 'Fig S7_D.mat'))
-
 for i = 1:length(NC1Data)
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);
@@ -397,7 +386,6 @@ for i = 1:length(NC1Data)
     ax.FontWeight='bold';
     colormap(ax,gray)
     colorbar
-
     z=0.8;
     for k = 1 : 3
         P=C_perc(k, k);

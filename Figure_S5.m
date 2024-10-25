@@ -5,7 +5,6 @@ addpath("DataPath")
 
 load(fullfile(DataPath, 'Fig S5.mat'))
 group={'Concave','Convex','Flat'};
-
 for i = 1:length(NC1Data)
     response=NC1Data(i).ResponseTable;
     rep=size(response,1);

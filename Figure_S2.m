@@ -12,10 +12,8 @@ for i = 1:length(NC1Data)
         response=response(response.Dur==j,:);
         rep=size(response,1);
         String = {'Vertical','Horizontal', 'Neither'};
-
         [C,order] = confusionmat(response.Orient,response.ReportedOrient,'Order',String);
         Title = strcat(['Orientation Detection - N=', num2str(rep)]);
-
         h=figure;
         C_perc=(C./15)*100;
         ax=imagesc(C_perc,[0,100]);
@@ -28,7 +26,6 @@ for i = 1:length(NC1Data)
         ax.FontWeight='bold';
         colormap(ax,gray)
         colorbar
-
         z=0.8;
         for k = 1 : 3
             P=round(C_perc(k, k));
@@ -75,10 +72,8 @@ for i = 1:length(NC1Data)
         response=response(response.Amp==j,:);
         rep=size(response,1);
         String = {'Vertical','Horizontal', 'Neither'};
-
         [C,order] = confusionmat(response.Orient,response.ReportedOrient,'Order',String);
         Title = strcat(['Orientation Detection - N=', num2str(rep)]);
-
         h=figure;
         C_perc=(C./30)*100;
         ax=imagesc(C_perc,[0,100]);
@@ -91,7 +86,6 @@ for i = 1:length(NC1Data)
         ax.FontWeight='bold';
         colormap(ax,gray)
         colorbar
-
         z=0.8;
         for k = 1 : 3
             P=round(C_perc(k, k));

@@ -52,7 +52,6 @@ ax.FontWeight='bold';
 colormap(ax,gray)
 colorbar
 z=0.8;
-
 for k = 1 : 4
     P=round(M(k, k));
     text(z, k, num2str(P),'Color','black','FontSize', 30,'FontWeight','bold');
@@ -72,7 +71,6 @@ ylim([0 100])
 load(fullfile(DataPath, 'Fig S6_B.mat'))
 group={'Thu-Pi','Pi-Thu','Pal-Tip','Tip-Pal'};
 tmp=1;
-
 for i = 1:length(NC1Data)
     for j=[40 60 80]
         response=NC1Data(i).ResponseTable;
@@ -93,7 +91,6 @@ for i = 1:length(NC1Data)
         ax.FontWeight='bold';
         colormap(ax,gray)
         colorbar
-
         z=0.8;
         for k = 1 : 4
             P=C_perc(k, k);
@@ -119,7 +116,6 @@ ax.FontWeight='bold';
 colormap(ax,gray)
 colorbar
 z=0.8;
-
 for k = 1 : 4
     P=round(M(k, k));
     text(z, k, num2str(P),'Color','black','FontSize', 30,'FontWeight','bold');
