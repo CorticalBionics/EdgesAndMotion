@@ -52,6 +52,7 @@ errorbar([mean([CC{2}(1,1) CC{2}(2,2) CC{2}(3,3) CC{2}(4,4) CC{2}(5,5)])...
 xticklabels({'Simultaneous','Sequential'})
 ylabel('Performance (%)')
 title('Fig.5 Panel C left')
+[h,p,stats] = fishertest([72 78; 54 96]);
 
 % Panel C (right)
 
